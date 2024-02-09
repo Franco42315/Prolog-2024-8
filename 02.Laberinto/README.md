@@ -1,3 +1,5 @@
+[Volver](../README.md)
+
 # Documentación del Código del Laberinto
 
 Este código resuelve un laberinto representado como una matriz de números. 
@@ -74,3 +76,5 @@ Finalmente, se llama a la función recorrerLaberinto(laberinto, x, y) para inici
 ```javascript
 recorrerLaberinto(laberinto, x, y);
 ```
+
+[Volver](../README.md)

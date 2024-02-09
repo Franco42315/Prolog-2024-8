@@ -1,3 +1,5 @@
+[Volver](../README.md)
+
 # Documentación del Código de las Islas
 
 Este código resuelve el problema de identificar y marcar “islas” en una matriz bidimensional. En este contexto, una “isla” se define como un grupo de '1’s adyacentes en la matriz. El código recorre la matriz y, cuando encuentra una isla, la marca con ‘x’. Además, el código marca las celdas de agua (representadas por ‘0’) que ha visitado con ‘-’.
@@ -68,3 +70,5 @@ x - - - - x x
 
 ```
 Esto muestra que el código ha identificado y marcado correctamente las islas en la matriz.
+
+[Volver](../README.md)
