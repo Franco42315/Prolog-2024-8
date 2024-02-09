@@ -11,9 +11,9 @@ Este repositorio contiene todos los trabajos del curso de Programación Lógica 
 ## Índice de Trabajos
 <!-- [Nombre del archivo](./01.Islas/README.md) -->
 
-1. [Islas](./01.Islas//README.md)
-2. [Laberinto](./02.Laberinto//README.md)
-3. [Operaciones Matematicas en PostOrden y Preorden](./03.OperacionPostOrden/README.md)
+1. [Busqueda de Islas](./01.Islas//README.md)
+2. [Resolución de Laberinto](./02.Laberinto//README.md)
+3. [Evaluación de expresiones matemáticas en PostOrden y Preorden](./03.OperacionPostOrden/README.md)
 
 
 Cada enlace te llevará a la documentación específica de cada trabajo.
