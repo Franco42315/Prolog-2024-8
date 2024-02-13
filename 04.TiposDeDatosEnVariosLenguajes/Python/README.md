@@ -28,6 +28,6 @@ Python es un lenguaje de programación multiparadigma. Soporta varios paradigmas
 ##### [Algoritmos](./README.md)
 - Factorial
 - Fibonacci
-- Palindrommo
+- Palindromo
 
 [Volver](../README.md)
