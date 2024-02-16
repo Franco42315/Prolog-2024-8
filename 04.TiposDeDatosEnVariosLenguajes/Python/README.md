@@ -49,10 +49,16 @@ ibonacci: Este algoritmo calcula el número de Fibonacci en la posición n. La s
 
 ``` Python
 def fibonacci(n):
-    if n <= 1:
-        return n
+    if n <= 0:
+        return "El número debe ser mayor que 0"
+    elif n == 1:
+        return 0
+    elif n == 2:
+        return 1
     else:
-        return fibonacci(n - 1) + fibonacci(n - 2)
+        return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(10))
 ```
 
 ##### Palindromo
@@ -60,8 +66,12 @@ def fibonacci(n):
 Palíndromos: Este algoritmo verifica si una cadena es un palíndromo. Un palíndromo es una palabra que se lee igual de izquierda a derecha que de derecha a izquierda.
 
 ``` Python
-def es_palindromo(s):
-    return s == s[::-1]
+def es_palindromo(palabra):
+    palabra = palabra.lower()  # Convertir a minúsculas
+    palabra = palabra.replace(' ', '')  # Eliminar espacios
+    return palabra == palabra[::-1]  # Comprobar si la palabra es igual a su reverso
+
+print(es_palindromo("peep"))
 ```
 
 [Volver](../README.md)
