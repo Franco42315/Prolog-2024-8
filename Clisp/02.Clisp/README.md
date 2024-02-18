@@ -1,13 +1,6 @@
-(defun sumaNumero()
-  (princ "Dame un numero: ")
-  (setq num1 (read))
-  (princ "Dame un segundo numero: ")
-  (setq num2 (read))
-  (setq resultado(+ num1 num2))
-  (write resultado)
-)
-; ---------------------------------------------
-; 10 areas y 10 volumenes (pedir lados)
+[Volver](../../README.md)
+
+# Areas y Volumenes
 
 ; area 1
 (defun areaRectangulo()
@@ -111,14 +104,14 @@
 
 ; Volumenes
 
-;; Volumen de un cubo
+; Volumen de un cubo
 (defun volumen-cubo ()
   (princ "Dame el lado: ")
   (setq lado (read))
   (setq resultado (* lado lado lado))
   (write resultado))
 
-;; Volumen de un cilindro
+; Volumen de un cilindro
 (defun volumen-cilindro ()
   (princ "Dame el radio: ")
   (setq radio (read))
@@ -127,14 +120,14 @@
   (setq resultado (* pi radio radio altura))
   (write resultado))
 
-;; Volumen de una esfera
+; Volumen de una esfera
 (defun volumen-esfera ()
   (princ "Dame el radio: ")
   (setq radio (read))
   (setq resultado (* 4/3 pi radio radio radio))
   (write resultado))
 
-;; Volumen de un cono
+; Volumen de un cono
 (defun volumen-cono ()
   (princ "Dame el radio: ")
   (setq radio (read))
@@ -143,7 +136,7 @@
   (setq resultado (* 1/3 pi radio radio altura))
   (write resultado))
 
-;; Volumen de un prisma rectangular
+; Volumen de un prisma rectangular
 (defun volumen-prisma-rectangular ()
   (princ "Dame el largo: ")
   (setq largo (read))
@@ -154,7 +147,7 @@
   (setq resultado (* largo ancho altura))
   (write resultado))
 
-;; Volumen de una pirámide
+; Volumen de una pirámide
 (defun volumen-piramide ()
   (princ "Dame la base: ")
   (setq base (read))
@@ -163,31 +156,33 @@
   (setq resultado (* 1/3 base altura))
   (write resultado))
 
-;; Volumen de un tetraedro
+; Volumen de un tetraedro
 (defun volumen-tetraedro ()
   (princ "Dame la arista: ")
   (setq arista (read))
   (setq resultado (* 1/6 (sqrt 2) arista arista arista))
   (write resultado))
 
-;; Volumen de un octaedro
+; Volumen de un octaedro
 (defun volumen-octaedro ()
   (princ "Dame la arista: ")
   (setq arista (read))
   (setq resultado (* 1/3 (sqrt 2) arista arista arista))
   (write resultado))
 
-;; Volumen de un dodecaedro
+; Volumen de un dodecaedro
 (defun volumen-dodecaedro ()
   (princ "Dame la arista: ")
   (setq arista (read))
   (setq resultado (* 1/4 (sqrt (75 + 10 * (sqrt 5))) arista arista arista))
   (write resultado))
 
-;; Volumen de un icosaedro
+; Volumen de un icosaedro
 (defun volumen-icosaedro ()
   (princ "Dame la arista: ")
   (setq arista (read))
   (setq resultado (* 5/12 (3 + sqrt 5) arista arista arista))
   (write resultado))
 
+[Codigo](./sumaNumero.lsp)
+[Volver](../../README.md)

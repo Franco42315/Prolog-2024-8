@@ -16,6 +16,7 @@ Este repositorio contiene todos los trabajos del curso de Programación Lógica 
 3. [Operaciones Matematicas en PostOrden, Preorden e Inorden](./03.OperacionPostOrden/README.md)
 4. [Tipos de datos y Disciplina de tipos](./04.TiposDeDatosEnVariosLenguajes/README.md)
 5. [Funciones en clisp](./Clisp/01.Ejemplofunciones/README.md)
+6. [Áreas y Volumen](./Clisp/02.Clisp/README.md)
 
 ---
 Cada enlace te llevará a la documentación específica de cada trabajo.
