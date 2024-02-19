@@ -124,9 +124,17 @@ Aquí, el primer `car` devuelve el primer elemento de la lista, que es `(a)`. Lu
 ### ((1 2 3) ((4 5 6)) (((7 8 9 10))))
 
 ``` lisp
+
+(caaar (cdr '((1 2 3) ((4 5 6)) (((7 8 9 10)))))) 
 ; 1 4
+
+(caaaar (cddr '((1 2 3) ((4 5 6)) (((7 8 9 10)))))) 
 ; 2 7
+
+(cddr (car '((1 2 3) ((4 5 6)) (((7 8 9 10))))))
 ; 3 3
+
+(cdddr (caaar (cddr '((1 2 3) ((4 5 6)) (((7 8 9 10)))))))
 ; 4 10
 
 ```
