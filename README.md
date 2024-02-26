@@ -18,6 +18,7 @@ Este repositorio contiene todos los trabajos del curso de Programación Lógica 
 5. [Funciones en clisp](./Clisp/01.Ejemplofunciones/README.md)
 6. [Áreas y Volumen](./Clisp/02.Clisp/README.md)
 7. [Car y Cdr en Clisp](./Clisp/03.car_Y_cdr/README.md)
+8. [Menú de Áreas y Volumenes](./Clisp//05.MenúÁreaVolumen/README.md)
 
 ---
 Cada enlace te llevará a la documentación específica de cada trabajo.
