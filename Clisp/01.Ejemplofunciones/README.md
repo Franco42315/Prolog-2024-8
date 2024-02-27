@@ -68,4 +68,18 @@
 3. `(defvar y 20)` ; Define y asigna 20 a y
 4. `(defparameter z 30)` ; Define y asigna 30 a z
 
+## Read
+
+- `read`: Esta función lee una expresión de la entrada estándar y la devuelve como un objeto Lisp.
+- `read`-char: Lee un solo carácter de la entrada estándar.
+- `read-line`: Absorbe caracteres hasta donde aparece un retorno de carro o un fin de archivo. Luego produce una cadena con los caracteres que preceden el retorno de carro o el final del archivo.
+
+La función rem devuelve el residuo de la división entera, y su comportamiento es similar al operador % en Java. Aquí te dejo un ejemplo:
+(rem 10 3) ; Devuelve 1 porque el residuo de dividir 10 entre 3 es 1
+
+Por otro lado, la función mod también devuelve el residuo de la división entera, pero su comportamiento es un poco diferente cuando se trabaja con números negativos. Aquí te dejo un ejemplo:
+(mod -10 3) ; Devuelve 2 porque -10 dividido entre 3 es -4 con un "residuo" de -2, pero `mod` ajusta el resultado para que sea positivo, sumando el divisor (3 en este caso) al residuo.
+
+
+
 [Volver](../../README.md)

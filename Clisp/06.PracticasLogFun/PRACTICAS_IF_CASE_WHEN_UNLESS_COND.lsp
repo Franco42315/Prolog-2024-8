@@ -45,6 +45,7 @@
 
 ;C:\PrologPracticas\Clisp\06.PracticasLogFun\PRACTICAS_IF_CASE_WHEN_UNLESS_COND.lsp
 
+
 ;2. Escriba un programa para determinar si un solicitante puede lograr
 ;un préstamo. Deberá pedir los siguientes datos para cada
 ;solicitante: Nombre, historia crediticia(‘b’buena o ‘m’ mala),
@@ -63,24 +64,30 @@
 ; 5 puntos si el salario es 50% del préstamo o más
 ; 3 puntos si el salario es por lo menos 25% pero menos de 50% del préstamo
 ; 1 punto si el salario es por lo menos 10% pero menos de 25% del préstamo.
-; 5 puntos si se tiene otra propiedad del doble del préstamo o mas.
-; 3 puntos si se tiene otra propiedad igual al préstamo pero menor del doble.
+
+(defvar puntos 0)
 
 (defun prestamo()
-  ;; (princ "Ingrese su nombre: ")
-  ;; (setq nombre(read))
-  ;; (princ "Ingrese historia crediticia b/m: ")
-  ;; (setq histCre(read))
+  (princ "Ingrese su nombre: ")
+  (setq nombre(read))
+  (princ "Ingrese historia crediticia b/m: ")
+  (setq histCre(read))
   (princ "Ingrese cantidad del prestamo solicitado: ")
   (setq cantPrestamo(read))
   (princ "Ingrese salario anual: ")
   (setq salario(read))
-  ;; (princ "Ingrese valor de otras propiedades: ")
-  ;; (setq valorPropiedaes(read))
-  (calcularPuntosSalario salario cantPrestamo)
+  (princ "Ingrese valor de otras propiedades: ")
+  (setq valorPropiedaes(read))
+  (if (string-equal histCre "b")
+      (progn
+        (calcularPuntosSalario salario cantPrestamo)
+        (calcularPuntosOProp valorPropiedaes cantPrestamo)
+        (if (> puntos 6)
+            (print "Su préstamo ha sido aprobado")
+            (print "Lo sentimos, no tiene suficientes puntos para un préstamo")))
+    (print "Su estado es malo, por lo tanto no se le puede dar un crédito"))
+  (print puntos)
 )
-
-(defvar puntos 0)
 
 (defun calcularPuntosSalario (salario cantPrestamo)
   (if (>= salario (/ cantPrestamo 2))
@@ -92,5 +99,16 @@
               (setq puntos 0))))
   (print puntos)
 )
+
+(defun calcularPuntosOProp(valorPropiedaes cantPrestamo)
+  (if (>= valorPropiedaes (* cantPrestamo 2))
+      (incf puntos 5)
+      (if (>= valorPropiedaes cantPrestamo)  
+        (incf puntos 3)
+      )
+  )
+)
+
+
 
 
