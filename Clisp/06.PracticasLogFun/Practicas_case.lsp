@@ -118,7 +118,9 @@
 ; bien divisible entre 400.  Escriba un programa que pida como
 ; entrada el año e imprima si el año es bisiesto o no.
 
-;En Lisp, case no es la herramienta adecuada para este tipo de comparaciones, ya que case se utiliza para comparar con valores exactos, no para comparaciones booleanas como divisibilidad. Para este tipo de comparaciones, if o cond son más apropiados.
+;En Lisp, case no es la herramienta adecuada para este tipo de comparaciones, 
+; ya que case se utiliza para comparar con valores exactos, no para comparaciones 
+;booleanas como divisibilidad. Para este tipo de comparaciones, if o cond son más apropiados.
 
 
 

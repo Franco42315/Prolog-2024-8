@@ -117,6 +117,8 @@ Table of Contents
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      [IF](./Practicas_if.lsp)
      [CASE](./Practicas_case.lsp)
+     [WHEN](./Practicas_when.lsp)
+     [UNLESS](./Practicas_unless.lsp)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [Volver](../../README.md)

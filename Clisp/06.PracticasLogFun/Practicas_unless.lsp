@@ -6,7 +6,21 @@
 ; Escriba un programa que pida como dato de entrada el número de
 ; pantalones que se desean comprar e imprima el total a pagar por la compra hecha.
 
- 
+(defun calcular-total (num-pantalones precio)
+  (let ((descuento 0))
+    (unless (< num-pantalones 5)
+      (setf descuento 0.15))
+    (unless (< num-pantalones 12)
+      (setf descuento 0.30))
+    (* num-pantalones (- precio (* precio descuento)))))
+
+(defun main ()
+  (format t "Ingrese el número de pantalones que desea comprar: ")
+  (let ((num-pantalones (read)))
+    (format t "Ingrese el precio de un pantalón: ")
+    (let ((precio (read)))
+      (format t "El total a pagar es: ~A" (calcular-total num-pantalones precio)))))
+
 
 ; 2. Escriba un programa para determinar si un solicitante puede lograr un préstamo.
 ; Deberá pedir los siguientes datos para cada solicitante: Nombre, historia crediticia ('b' buena o 'm' mala),
@@ -20,12 +34,55 @@
 ; 5 puntos si se tiene otra propiedad del doble del préstamo o más.
 ; 3 puntos si se tiene otra propiedad igual al préstamo pero menor del doble.
 
+(defun calcular-puntos (salario cantidad-prestamo valor-propiedades)
+  (let ((puntos 0))
+    (unless (< salario (* 0.5 cantidad-prestamo))
+      (setf puntos (+ puntos 5)))
+    (unless (or (< salario (* 0.25 cantidad-prestamo)) (>= salario (* 0.5 cantidad-prestamo)))
+      (setf puntos (+ puntos 3)))
+    (unless (or (< salario (* 0.1 cantidad-prestamo)) (>= salario (* 0.25 cantidad-prestamo)))
+      (setf puntos (+ puntos 1)))
+    (unless (< valor-propiedades (* 2 cantidad-prestamo))
+      (setf puntos (+ puntos 5)))
+    (unless (or (< valor-propiedades cantidad-prestamo) (>= valor-propiedades (* 2 cantidad-prestamo)))
+      (setf puntos (+ puntos 3)))
+    puntos))
+
+(defun main ()
+  (format t "Ingrese su nombre: ")
+  (let ((nombre (read-line)))
+    (format t "Ingrese su historia crediticia ('b' buena o 'm' mala): ")
+    (let ((historia-crediticia (read-line)))
+      (unless (string= historia-crediticia "m")
+        (format t "Ingrese la cantidad que desea pedir prestada: ")
+        (let ((cantidad-prestamo (read)))
+          (format t "Ingrese su salario anual: ")
+          (let ((salario (read)))
+            (format t "Ingrese el valor de sus otras propiedades: ")
+            (let ((valor-propiedades (read)))
+              (let ((puntos (calcular-puntos salario cantidad-prestamo valor-propiedades)))
+                (unless (< puntos 6)
+                    (format t "Felicidades ~A, su préstamo ha sido aprobado." nombre))
+                (when (< puntos 6)
+                    (format t "Lo siento ~A, su préstamo no ha sido aprobado." nombre)))))))))))
 
 
 ; 3. Escriba un programa que pida una letra minúscula.
 ; El programa deberá imprimir si la letra es una vocal (a,e,i,o,u), 
 ; semivocal (y) o una consonante.
 
+(defun tipo-de-letra (letra)
+  (unless (not (member letra '("a" "e" "i" "o" "u")))
+    (format t "La letra ~A es una vocal." letra))
+  (unless (not (string= letra "y"))
+    (format t "La letra ~A es una semivocal." letra))
+  (unless (or (member letra '("a" "e" "i" "o" "u" "y")) (< (char-code letra) (char-code 'a)) (> (char-code letra) (char-code 'z)))
+    (format t "La letra ~A es una consonante." letra)))
+
+(defun main ()
+  (format t "Ingrese una letra minúscula: ")
+  (let ((letra (read-line)))
+    (tipo-de-letra letra)))
 
 
 ; Para determinar si un año es bisiesto o no debe de cumplir las
@@ -33,6 +90,16 @@
 ; bien divisible entre 400.  Escriba un programa que pida como
 ; entrada el año e imprima si el año es bisiesto o no.
 
+(defun es-bisiesto (ano)
+  (unless (or (/= (mod ano 4) 0) (and (= (mod ano 100) 0) (/= (mod ano 400) 0)))
+    (format t "El año ~A es bisiesto." ano))
+  (when (or (/= (mod ano 4) 0) (and (= (mod ano 100) 0) (/= (mod ano 400) 0)))
+    (format t "El año ~A no es bisiesto." ano)))
+
+(defun main ()
+  (format t "Ingrese un año: ")
+  (let ((ano (read)))
+    (es-bisiesto ano)))
 
 
 ; 5 Escriba un programa que pida el número de mes (del 1 al 12) 
@@ -42,5 +109,19 @@
 ; Si da un mes diferente a los anteriores deberá imprimir el mensaje 
 ; MES ERRONEO.
 
+(defun dias-del-mes (mes)
+  (unless (not (= mes 2))
+    (format t "El mes ~A tiene 28 días." mes))
+  (unless (not (member mes '(4 6 9 11)))
+    (format t "El mes ~A tiene 30 días." mes))
+  (unless (not (member mes '(1 3 5 7 8 10 12)))
+    (format t "El mes ~A tiene 31 días." mes))
+  (when (not (member mes '(1 2 3 4 5 6 7 8 9 10 11 12)))
+    (format t "MES ERRONEO.")))
+
+(defun main ()
+  (format t "Ingrese el número de mes (del 1 al 12): ")
+  (let ((mes (read)))
+    (dias-del-mes mes)))
 
 
