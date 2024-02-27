@@ -2,50 +2,66 @@
 
 # Condicionales
 
-if: La estructura if en Lisp toma tres argumentos: una condición, una expresión a evaluar si la condición es verdadera, y una expresión a evaluar si la condición es falsa.
+`if`: La estructura if en Lisp toma tres argumentos: una condición, una expresión a evaluar si la condición es verdadera, y una expresión a evaluar si la condición es falsa.
+
+``` lisp
 (if (< 3 5)
     (print "Verdadero")
     (print "Falso"))
+```
 
-En este ejemplo, como 3 es menor que 5, se imprime “Verdadero”.
+En este ejemplo, como 3 es menor que 5, se imprime `“Verdadero”`.
 
-case: La estructura case en Lisp compara una expresión con una lista de cláusulas, cada una de las cuales consta de una lista de valores y una expresión a evaluar si la expresión coincide con uno de los valores.
+`case`: La estructura case en Lisp compara una expresión con una lista de cláusulas, cada una de las cuales consta de una lista de valores y una expresión a evaluar si la expresión coincide con uno de los valores.
+
+``` lisp
 (case 'verde
   ((rojo azul) (print "Color primario"))
   ((verde violeta naranja) (print "Color secundario"))
   (t (print "Otro color")))
+```
 
-En este ejemplo, como el valor es ‘verde’, se imprime “Color secundario”.
+En este ejemplo, como el valor es ‘verde’, se imprime `“Color secundario”`.
 
-when: La estructura when en Lisp evalúa una condición y, si es verdadera, evalúa una serie de expresiones.
+`when`: La estructura when en Lisp evalúa una condición y, si es verdadera, evalúa una serie de expresiones.
+
+``` lisp
 (when (> 5 3)
   (print "5 es mayor que 3")
   (print "Esto también se imprime"))
 
+```
+
 En este ejemplo, como 5 es mayor que 3, se imprimen ambas líneas.
 
-unless: La estructura unless en Lisp es similar a when, pero evalúa las expresiones si la condición es falsa.
+`unless`: La estructura unless en Lisp es similar a when, pero evalúa las expresiones si la condición es falsa.
+
+``` lisp
 (unless (= 2 3)
   (print "2 no es igual a 3")
   (print "Esto también se imprime"))
+```
 
 En este ejemplo, como 2 no es igual a 3, se imprimen ambas líneas.
 
-cond: La estructura cond en Lisp permite múltiples ramas de condiciones. Cada rama consta de una condición y una expresión a evaluar si la condición es verdadera. cond evalúa las condiciones en orden hasta que encuentra una que sea verdadera.
+`cond`: La estructura cond en Lisp permite múltiples ramas de condiciones. Cada rama consta de una condición y una expresión a evaluar si la condición es verdadera. cond evalúa las condiciones en orden hasta que encuentra una que sea verdadera.
+
+``` lisp
 (cond
   ((> 3 5) (print "3 es mayor que 5"))
   ((< 3 5) (print "3 es menor que 5"))
   (t (print "3 es igual a 5")))
+```
 
 En este ejemplo, como 3 es menor que 5, se imprime “3 es menor que 5”.
 
 ---
 
-				━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-				  PRACTICAS IF, CASE, WHEN, UNLESS, COND
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	  PRACTICAS IF, CASE, WHEN, UNLESS, COND
 
-							Eduardo Alcaraz
-				━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	Eduardo Alcaraz
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
 Table of Contents
@@ -100,7 +116,7 @@ Table of Contents
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      [IF](./Practicas_if.lsp)
-     [CASE](./Practivas_case.lsp)
+     [CASE](./Practicas_case.lsp)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [Volver](../../README.md)

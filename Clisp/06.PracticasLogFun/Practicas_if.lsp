@@ -114,13 +114,16 @@
 
 (defun meses()
   ; Solicita al usuario ingresar un número de mes.
-  (princ "Ingresa un numero de mes: ")
+  (princ "Ingresa un número de mes: ")
   (setq mes (read))
-  ; Evalúa el número de mes ingresado y determina la cantidad de días en ese mes.
-  (cond
-    ((= mes 2) (format t "El mes ~a tiene 28 días" mes))
-    ((member mes '(4 6 9 11)) (format t "El mes ~a tiene 30 días" mes))
-    ((member mes '(1 3 5 7 8 10 12)) (format t "El mes ~a tiene 31 días" mes))
-    (t (print "MES ERRONEO"))
+  (if (= mes 2)
+      (format t "El mes ~a tiene 28 días" mes)
+      (if (or (= mes 4) (= mes 6) (= mes 9) (= mes 11))
+          (format t "El mes ~a tiene 30 días" mes)
+          (if (or (= mes 1) (= mes 3) (= mes 5) (= mes 7) (= mes 8) (= mes 10) (= mes 12))
+              (format t "El mes ~a tiene 31 días" mes)
+              (print "MES ERRONEO")
+          )
+      )
   )
 )
