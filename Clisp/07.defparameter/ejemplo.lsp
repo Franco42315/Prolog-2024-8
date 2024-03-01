@@ -2,8 +2,8 @@
   (format t " ¿Tu personaje es ~a ?->% \n" (car lista))
   (format t "~%")
   (princ "Si / No: ")
-  (setq personaje(read))
-  (print personaje)
+  (setq resp(read))
+  (print resp)
   ;(print (car lista))
   ;; (if lista
   ;;   (recorre (car lista))
@@ -13,54 +13,53 @@
 
 (defparameter *nodes*  '
     (
-        (femenino 
-            (
-                (poderes 
-                    (aire 
-                        (Hola rayo))		
-                    (fuego
-                        (Hola fuego))		
-                    (tierra
-                        (Hola Tierra))		
-                    (agua 
-                        (poder de agua)))))
-        (masculino
-            (
-                (aire 
-                    (Hola rayo))		
-                (fuego
-                    (Hola fuego))		
-                (tierra
-                    (Hola Tierra))		
-                (agua 
-                    (poder de agua))))
-        (ovni
-            (
-                (aire 
-                    (Hola rayo))		
-                (fuego
-                    (Hola fuego))		
-                (tierra
-                    (Hola Tierra))		
-                (agua 
-                    (poder de agua)))
-)
-        (aleatorio
-            (
-                (aire 
-                    (Hola rayo))		
-                (fuego
-                    (Hola fuego))		
-                (tierra
-                    (Hola Tierra))		
-                (agua 
-                    (poder de agua)))
+      (sayayin 
+        (
+          (goku 
+            (gohan)
+            (goten)
+          )
+          (vegeta
+            (trunks)
+            (bra)
+          )
+          (broly)
+          (bardock)
+        )
+      )
+      (humano
+        (
+          (krillin)
+          (yamcha)
+          (tenshinhan)
+          (milk)
+          (bulma)
+          (androide
+            (c-17)
+            (c-18)
+            (c-16)
+          )
+        )
+      )
+      (namek
+        (
+          (piccolo)
+          (kami)
+          (dende)
+          (nail)
+        )
+      )
+      (deidad 
+        (
+          (beerus)
+          (whis)
+          (zeno)
+          (supreme-kai)
+        )
+      )
+    )
 )
 
-
-)
-
-)
 
 ; dada una estructura listar femenino, masculino, ovni, aleatorio
 
