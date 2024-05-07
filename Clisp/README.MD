@@ -15,15 +15,12 @@
 	)
 )
 
-
 ;2. Escribir un programa que encuentre la suma de los enteros positivos pares desde N hasta 2
 
 (defun sumapares (num)
   (if (< num 2)
       0
       (+ num (sumapares (- n 2)))))
-
-
 
 ;3. Asignar a la variable X1 la lista (COCHE MOTO TREN) y a la variable X2 la lista (EDUARDO PEDRO ANTONIO)
  ;- Concadenar las dos listas y calcular la longitud de la lista restultante
@@ -46,7 +43,6 @@
 (defparameter *lista* '(a b c d))
 
 (cdddr *lista*)
-
 
 ;5. Definir una función que tenga por argumento una lista y devuelva otra lista con el primer y último elemento de la lista
 (defun primer-ultimo (lista)

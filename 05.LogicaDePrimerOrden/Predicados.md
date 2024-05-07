@@ -1,131 +1,119 @@
-# **PrediCado**s
+# **PrediCados**
 
-- ## La Tierra es un planeta
+Analisis de predicador
+De los siguientes predicados identificar
 
-****Predicado**:** Es un planeta.
-**Constantes y variables de individuo:** Tierra, planeta
-**Propiedades:** planeta
-**Predicado**: Binario
-Cuantificador logico: No aplica
+- Tipo de predicado (monario, binario, etc)
+- onstantes de individuo
+- Variable de individuo
+- Propiedades
+- Cuantificadores
 
-- ## La Luna no es un planeta
+## La tierra es un planeta
+- Tipo de predicado: Monario
+- Constantes de individuo: La tierra
+- Variable de individuo: 
+- Propiedades: Es un planeta
+- Cuantificadores: 
 
-****Predicado**:** No es un planeta
-**Constantes y variables de individuo:** Planeta
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
+## La luna no es un planeta
+- Tipo de predicado: Monario
+- Constantes de individuo: La luna
+- Variable de individuo: 
+- Propiedades: (Es un planeta)
+- Cuantificadores: 
 
-- ## La Luna es un satélite
 
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
+## La luna es un satelite
+- Tipo de predicado: Monario
+- Constantes de individuo: La luna
+- Variable de individuo: 
+- Propiedades: Es un sataelite
+- Cuantificadores: 
 
-- ## La Tierra gira alrededor del Sol
 
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
+## La tierra gira alrededor del sol
+- Tipo de predicado: Binario
+- Constantes de individuo: La tierra, El sol
+- Variable de individuo: 
+- Propiedades: Gira alrededor de
+- Cuantificadores: 
 
-- ## Todo planeta es un satelite
 
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
+## Todo planeta es un satelite
+- Tipo de predicado: Monario
+- Constantes de individuo: 
+- Variable de individuo: planeta
+- Propiedades: Es un planeta
+- Cuantificadores: Todo planeta
 
-- ## Todo planeta gira alrededor del Sol
 
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
+## Todo planeta gira alrededor del sol
+- Tipo de predicado: Monario
+- Constantes de individuo: Sol
+- Variable de individuo: Planeta
+- Propiedades: Es un planeta
+- Cuantificadores: Todo planeta
 
-- ## Algún planeta gira alrededor de la Luna
+## Algun planeta gira alrededor de la luna
+- Tipo de predicado: Binario
+- Constantes de individuo: Luna
+- Variable de individuo: planeta
+- Propiedades: Es un planeta, gira alrededor de
+- Cuantificadores: Algun planeta
 
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
+## Hay por lo menos un satelite
+- Tipo de predicado: Monario    
+- Constantes de individuo: 
+- Variable de individuo: Satelite
+- Propiedades: 
+- Cuantificadores: 
 
-- ## Hay por lo menos un satélite
+## Todos los perros del vecindario muerden a algun cartero
+- Tipo de predicado: 
+- Constantes de individuo: 
+- Variable de individuo: 
+- Propiedades: 
+- Cuantificadores: 
 
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
+## Hay un cartero al que al menos muerden todos los perros
+- Tipo de predicado: 
+- Constantes de individuo: 
+- Variable de individuo: 
+- Propiedades: 
+- Cuantificadores: 
+  
+## Todos los carteros son mordidos por algun perro
+- Tipo de predicado: 
+- Constantes de individuo: 
+- Variable de individuo: 
+- Propiedades: 
+- Cuantificadores: 
+  
+## Hay un perro que muerde a todos los carteros
+- Tipo de predicado: 
+- Constantes de individuo: 
+- Variable de individuo: 
+- Propiedades: 
+- Cuantificadores: 
 
-- ## Todos los perros del vecnindario muerden a algún cartero
+## Todos los perros que asusten a algun cartero, lo muerden
+- Tipo de predicado: 
+- Constantes de individuo: 
+- Variable de individuo: 
+- Propiedades: 
+- Cuantificadores: 
 
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
+## Hay un pero que muerde a todos los perros que muerden a algun cartero
+- Tipo de predicado: 
+- Constantes de individuo: 
+- Variable de individuo: 
+- Propiedades: 
+- Cuantificadores: 
 
-- ## Hay un carterp al que lo muerden todos los perros
-
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
-
-- ## Todos los carteros son mordidos por algún perro
-
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
-
-- ## Hay un perro que muerde a todos los carteros
-
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
-
-- ## Todos los perros que asustan a algún cartero, lo muerden
-
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
-
-- ## Hay un perro que muerde a todos los perros que muerden a algún cartero
-
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
-
-- ## Hay un solo perro que se muerde a sí mismo
-
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
-
-## Identificar lo siguiente
-
-****Predicado**:**
-**Constantes y variables de individuo**
-**Propiedades:**
-**Predicado** binario o monario
-Cuantificador logico
-
-### Tipos de **predicado**s
+## Hay un solo perro que se muerde a si mismo
+- Tipo de predicado: 
+- Constantes de individuo: 
+- Variable de individuo: 
+- Propiedades: 
+- Cuantificadores: 

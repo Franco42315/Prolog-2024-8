@@ -1,4 +1,6 @@
-# hola
+[Volver](../../README.md)
+
+# Nodos
 
 ``` lisp
   (defparameter *nodes* '((living-room (you are in the living-room.
@@ -30,3 +32,53 @@ Este tipo de estructura de datos se podría utilizar en un juego de texto o una 
 (GAR)
 
 REGRESA LA DESCRIPCION A PARTIR DEL PRIMER ELEMENTO QUE ESTA EN LOS PARAMETROS
+
+## Ejercicio en clase
+
+De este arbol imprimir la lista de todas las hojas de los personajes femeninos
+
+```lisp
+ (defparameter *nodes*  '((femenino (
+                                    (aire (ana))       
+                                    (fuego(azula))       
+                                    (tierra(top))       
+                                    (agua (katara))))
+                         (masculino(
+                                    (aire (Hola rayo))       
+                                    (fuego(Hola fuego))       
+                                    (tierra(Hola Tierra))       
+                                    (agua (poder de agua))))
+                         (ovni(
+                               (aire (Hola rayo))       
+                               (fuego(Hola fuego))       
+                               (tierra(Hola Tierra))       
+                               (agua (poder de agua)))
+                          )
+                         (aleatorio(
+                                    (aire (Hola rayo))       
+                                    (fuego(Hola fuego))       
+                                    (tierra(Hola Tierra))       
+                                    (agua (poder de agua)))
+                          )
+                         ))
+```
+
+---
+
+```lisp
+;; Definición de la función obtenerFemenino
+(defun obtenerFemenino(lista)
+    ;; Se obtiene la rama femenina del árbol
+    (setq rama (car (cdr (car lista))))
+    ;; Se aplica la función append a la lista de personajes femeninos
+    (apply #'append (mapcar #'cadr rama))
+)
+
+;; Ejecución de la función obtenerFemenino
+(obtenerFemenino *nodes*)
+
+;; Resultado
+(ANA AZULA TOP KATARA)
+```
+
+[Volver](../../README.md)
