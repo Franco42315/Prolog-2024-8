@@ -1,7 +1,6 @@
-
 eliza:-	writeln('Hola , mi nombre es  Eliza tu  chatbot,
 	por favor ingresa tu consulta,
-	usar solo minúsculas sin . al final:'),
+	usar solo minusculas sin . al final:'),
 	readln(Input),
 	eliza(Input),!.
 eliza(Input):- Input == ['Adios'],
@@ -11,7 +10,7 @@ eliza(Input):- Input == ['Adios', '.'],
 eliza(Input) :-
 	template(Stim, Resp, IndStim),
 	match(Stim, Input),
-	% si he llegado aquí es que he
+	% si he llegado aqui es que he
 	% hallado el template correcto:
 	replace0(IndStim, Input, 0, Resp, R),
 	writeln(R),
@@ -52,7 +51,7 @@ template([tell, me, a, s(_), _], ['No', i, can, not, ',', i, am, bad, at, that],
 
 % template custom
 template([como, ha, sido, tu, dia, hoy, '?'], ['Cuentame', un, poco, sobre, tu, dia], []).
-template([que, planes, tienes, para, el, fin, de, semana, '?'], ['Me', gustaria, saber, que, tienes, planeado, para, el, fin, de, semana], []).
+template([que, planes, tienes, para, el, fin, de, semana, '?'], ['Me', gustaria, saber, que, tienes, planeado, para, el, fin, de, semana], [0]).
 template([que, opinas, sobre, el, clima, de, hoy, '?'], ['El', clima, es, un, tema, interesante, '¿',no, crees,'?'], []).
 template([has, escuchado, alguna, cancion, nueva, recientemente, '?'], ['Estoy', interesado, en, conocer, tu, opinion, sobre, musica], []).
 template([has, visto, alguna, pelicula, interesante, ultimamente, '?'], ['Me', encantaria, escuchar, tu, recomendacion, de, pelicula], []).
@@ -72,21 +71,38 @@ template([te, consideras, una, persona, optimista, '?'], ['La', actitud, optimis
 template([que, crees, que, nos, depara, el, futuro, '?'], ['El', futuro, es, un, misterio, que, nos, aguarda], []).
 template([tienes, alguna, pregunta, para, mi, '?'], ['Estoy', aqui, para, responder, cualquier, pregunta, que, tengas], []).
 
-template([me, siento, feliz, _], ['Eso', 'es', 'genial', '!', '¿Qué', 'te', 'hizo', 'sentir', 'así', '?'], []).
-template([estoy, enojado, _], ['Lo', 'siento', 'que', 'te', 'sientas', 'así', ',', '¿quieres', 'hablar', 'sobre', 'eso', '?'], []).
-template([estoy, confundido, _], ['Puedo', 'intentar', 'ayudarte', 'a', 'entender', ',', '¿qué', 'te', 'confunde', '?'], []).
-template([necesito, un, consejo, _], ['Claro', ',', '¿sobre', 'qué', 'necesitas', 'un', 'consejo', '?'], []).
-template([no, puedo, dormir, _], ['Lo', 'siento', 'que', 'estás', 'teniendo', 'problemas', 'para', 'dormir', '.', 'A', 'veces', 'ayuda', 'leer', 'un', 'libro', '.'], []).
-template([estoy, emocionado, _], ['¡Eso', 'suena', 'emocionante', '!', '¿Quieres', 'compartir', 'más', 'sobre', 'eso', '?'], []).
-template([me, siento, solo, _], ['Lo', 'siento', 'que', 'te', 'sientas', 'así', ',', 'siempre', 'estoy', 'aquí', 'para', 'hablar', 'contigo', '.'], []).
-template([estoy, aburrido, _], ['¿Has', 'considerado', 'leer', 'un', 'libro', 'o', 'ver', 'una', 'película', '?'], []).
-template([estoy, estresado, _], ['La', 'meditación', 'puede', 'ayudarte', 'a', 'aliviar', 'el', 'estrés', '.'], []).
-template([me, siento, mal, _], ['Lo', 'siento', 'que', 'te', 'sientas', 'así', ',', '¿hay', 'algo', 'que', 'quieras', 'hablar', '?'], []).
-template([estoy, cansado, _], ['Parece', 'que', 'necesitas', 'descansar', '.', 'Asegúrate', 'de', 'cuidarte', '.'], []).
-template([estoy, triste, _], ['Lo', 'siento', 'que', 'te', 'sientas', 'así', ',', 'siempre', 'estoy', 'aquí', 'para', 'escucharte', '.'], []).
-template([estoy, preocupado, _], ['Entiendo', 'que', 'estés', 'preocupado', ',', '¿quieres', 'hablar', 'más', 'sobre', 'eso', '?'], []).
-template([me, siento, ansioso, _], ['Lo', 'siento', 'que', 'te', 'sientas', 'así', ',', 'la', 'respiración', 'profunda', 'puede', 'ayudar', '.'], []).
+template([me, siento, feliz, _], ['Eso', 'es', 'genial', '!', '¿Que', 'te', 'hizo', 'sentir', 'asi', '?'], []).
+template([estoy, enojado, _], ['Lo', 'siento', 'que', 'te', 'sientas', 'asi', ',', '¿quieres', 'hablar', 'sobre', 'eso', '?'], []).
+template([estoy, confundido, _], ['Puedo', 'intentar', 'ayudarte', 'a', 'entender', ',', '¿que', 'te', 'confunde', '?'], []).
+template([necesito, un, consejo, _], ['Claro', ',', '¿sobre', 'que', 'necesitas', 'un', 'consejo', '?'], []).
+template([no, puedo, dormir, _], ['Lo', 'siento', 'que', 'estas', 'teniendo', 'problemas', 'para', 'dormir', '.', 'A', 'veces', 'ayuda', 'leer', 'un', 'libro', '.'], []).
+template([estoy, emocionado, _], ['¡Eso', 'suena', 'emocionante', '!', '¿Quieres', 'compartir', 'mas', 'sobre', 'eso', '?'], []).
+template([me, siento, solo, _], ['Lo', 'siento', 'que', 'te', 'sientas', 'asi', ',', 'siempre', 'estoy', 'aqui', 'para', 'hablar', 'contigo', '.'], []).
+template([estoy, aburrido, _], ['¿Has', 'considerado', 'leer', 'un', 'libro', 'o', 'ver', 'una', 'pelicula', '?'], []).
+template([estoy, estresado, _], ['La', 'meditacion', 'puede', 'ayudarte', 'a', 'aliviar', 'el', 'estres', '.'], []).
+template([me, siento, mal, _], ['Lo', 'siento', 'que', 'te', 'sientas', 'asi', ',', '¿hay', 'algo', 'que', 'quieras', 'hablar', '?'], []).
+template([estoy, cansado, _], ['Parece', 'que', 'necesitas', 'descansar', '.', 'Asegurate', 'de', 'cuidarte', '.'], []).
+template([estoy, triste, _], ['Lo', 'siento', 'que', 'te', 'sientas', 'asi', ',', 'siempre', 'estoy', 'aqui', 'para', 'escucharte', '.'], []).
+template([estoy, preocupado, _], ['Entiendo', 'que', 'estes', 'preocupado', ',', '¿quieres', 'hablar', 'mas', 'sobre', 'eso', '?'], []).
+template([me, siento, ansioso, _], ['Lo', 'siento', 'que', 'te', 'sientas', 'asi', ',', 'la', 'respiracion', 'profunda', 'puede', 'ayudar', '.'], []).
 
+% 5 de 2 y 5 de 3
+template([soy, s(), y, vivo, en,s()],['Interesante','eres',0,'y','vives','en',1],[1,5]).
+template([que, es, mejor, s(), o, s()],['Yo','pienso','que','es','mejor',0,'que',1],[3,5]).
+template([es, mejor, el, libro, de, s(), que, la, pelicula, actuada, por, s()],['Tienes','razon', 'la', 'pelicula', 'actuada', 'por', 1, 'es', 'peor', 'que', 'el', 'libro', 'de', 0],[5,11]).
+template([estoy, buscando, informacion, sobre, s(), y, s()], ['Entiendo, estas buscando informacion sobre', 0, 'y', 1, '. Dejame ver que puedo encontrar.'], [4, 6]).
+template([puedes, explicarme, la, diferencia, entre, s(), y, s()], ['Claro, quieres saber la diferencia entre', 0, 'y', 1, '. Permitime explicarte.'], [5, 7]).
+template([cual, es, mejor, para, s(), s(), o, s()], ['Para', 0, ', creo que', 1, 'podria ser mejor que', 2, '.'], [4, 5, 7]).
+template([tengo, dudas, sobre, s(), y, s()], ['Veo que tienes dudas sobre', 0, 'y', 1, '. ¿Como puedo ayudarte a aclararlas?'], [3, 5]).
+template([necesito, ayuda, con, s(), y, s()], ['Claro, puedo ayudarte con', 0, 'y', 1, '. ¿Que necesitas saber exactamente?'], [3, 5]).
+
+template([estoy, intentando, s(), pero, tengo, problemas, con, s(), y, s()], ['Veo que estas intentando', 0, 'pero tienes problemas con', 1, 'y', 2, '. ¿Has considerado alguna solucion?'], [2, 7, 9]).
+template([como, puedo, s(), si, tengo, s(), y, s()], ['Para', 0, 'a pesar de tener', 1, 'y', 2, ', podrias intentar una estrategia diferente.'], [2, 5, 7]).
+template([cual, es, la, diferencia, entre, s(), s(), y, s()], ['La diferencia entre', 0, ',', 1, 'y', 2, 'es que cada uno tiene caracteristicas unicas.'], [4, 5, 7]).
+template([por, que, s(), cuando, tengo, s(), y, s()], ['El motivo por el que', 0, 'cuando tienes', 1, 'y', 2, 'puede ser debido a varias razones.'], [2, 5, 7]).
+template([que, debo, hacer, si, tengo, s(), pero, tambien, tengo,
+
+ s(), y, s()], ['Si tienes', 0, 'pero tambien tienes', 1, 'y', 2, ', te recomendaria que busques un equilibrio.'], [5, 9, 11]).
 
 template(_, ['Please', explain, a, little, more, '.'], []). 
 % Lo que le gusta a eliza : flagLike
@@ -127,7 +143,7 @@ match([S|Stim],[I|Input]) :-
 	match(Stim, Input),!.
 
 match([S|Stim],[_|Input]) :-
-% I es un s(X), lo ignoro y continúo con el resto de la lista
+% I es un s(X), lo ignoro y continuo con el resto de la lista
 	\+atom(S),
 	match(Stim, Input),!.
 
@@ -148,12 +164,6 @@ replace0([I|_], Input, _, Resp, R):-
 	elizaDoes(Atom, R).
 
 % Eliza is:
-replace0([I|_], Input, _, Resp, R):-
-	nth0(I, Input, Atom),
-	nth0(0, Resp, X),
-	X == flagIs,
-	elizaIs(Atom, R).
-
 replace0([I|Index], Input, N, Resp, R):-
 	length(Index, M), M =:= 0,
 	nth0(I, Input, Atom),
