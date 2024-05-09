@@ -42,7 +42,7 @@ template([eres, s(_), '?'], [flagIs], [2]).
 
 template([como, estas, tu, '?'], [yo, estoy, bien, ',', gracias, por, preguntar, '.'], []).
 
-template([yo, pienso, que, _], [bueno, esa, es, tu, opinion], []).
+template([yo, pienso, que, _], [no, son, tan, inutiles], []).
 template([porque, _], [esa, no, es, una, buena, razon, '.'], []).
 template([i, have, s(_), with, s(_), '.'], ['You', have, to, deal, with, your, 0, and, your, 1, in, a, mature, way, '.'], [2, 4]).
 template([i, s(_),  _], [i, can, recommend, you, a, book, about, that, issue], []).
@@ -175,3 +175,4 @@ replace0([I|Index], Input, N, Resp, R):-
 	select(N, Resp, Atom, R1),
 	N1 is N + 1,
 	replace0(Index, Input, N1, R1, R),!.
+
