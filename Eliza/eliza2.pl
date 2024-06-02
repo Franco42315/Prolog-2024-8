@@ -17,14 +17,14 @@ eliza(Input) :-
 	readln(Input1),
 	eliza(Input1), !.
 
-template([eliza, quien, es, el, hijo, de, s(_)], [flagfam],[6]).
-template(_, ['Please', explain, a, little, more, '.'], []). 
+template(_, ['Por', favor, explica, un, poco, mas, '.'], []). 
 
 padre(juan, luis).		 
 padre(juan, antonio).
 padre(luis, carlos). 
 familia(X,R) :- padre(X,Y), R=["El  hijo de ", X, "es", Y].		 
-		 
+template([eliza, quien, es, el, hijo, de, s(_)], [flagfam],[6]).
+
 match([],[]).
 match([], _):- true.
 
