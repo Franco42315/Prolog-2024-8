@@ -1,4 +1,5 @@
 % Base de conocimiento
+
 % Declaraciones de enfermedades
 enfermedad(tosferina).
 enfermedad(tuberculosis).
@@ -125,6 +126,9 @@ especialidad(kisame, ninjutsu).
 especialidad(deidara, ninjutsu).
 especialidad(bee, ninjutsu).
 especialidad(bee, taijutsu).
+
+poder_visual(sasuke, sharingan).
+poder_visual(neji, byakugan).
 
 % Función para determinar si un síntoma pertenece a una enfermedad
 es_sintoma_de(Enfermedad, Sintoma, Respuesta) :-

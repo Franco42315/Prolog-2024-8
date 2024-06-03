@@ -535,3 +535,226 @@ replace0([], _, _, P, P).
 %     replace0(T, Input, I, T2, T3).
 % replace0([H|T], Input, I, [H1|T2], [H1|T3]) :- 
 %     replace0(T, Input, I, T2, T3).
+
+
+
+% Predicado principal de Eliza
+eliza :-
+    writeln('Hola, mi nombre es Eliza, tu chatbot.'),
+    writeln('Por favor ingresa tu consulta, usar solo minusculas sin . al final:'),
+    readln(Entrada),
+    eliza(Entrada), !.
+
+% Predicado para manejar la entrada de "Adios"
+eliza(Entrada) :- member('adios', Entrada),
+    writeln('Adios. Espero haber podido ayudarte.'), !.
+
+% Predicado principal de procesamiento de entrada
+eliza(Entrada) :-
+    findall(Patron, plantilla(Patron, _, _), Patrones),
+    encontrar_plantilla(Entrada, Patrones, Patron),
+    plantilla(Patron, Respuesta, IndicesPatron),
+    % Si se ha encontrado la plantilla correcta:
+    reemplazar(IndicesPatron, Entrada, 0, Respuesta, RespuestaFinal),
+    writeln(RespuestaFinal),
+    readln(NuevaEntrada),
+    eliza(NuevaEntrada), !.
+
+% Predicado para encontrar la plantilla correcta
+encontrar_plantilla(Entrada, [Patron|_], Patron) :- coincide(Patron, Entrada), !.
+encontrar_plantilla(Entrada, [_|RestoPatrones], Patron) :- encontrar_plantilla(Entrada, RestoPatrones, Patron).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plantillas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Plantillas para respuestas
+plantilla([eliza, quien, es, el, hijo, de, s(_)], [indicador_familia], [6]).
+
+% Plantillas de enfermedades O
+plantilla([que, es, s(_), '?'], [explicacion_de_enfermedad], [2]).
+% x
+plantilla([cuales, son, los, sintomas, de, s(_), '?'], [sintomas_de_enfermedad], [6]).
+% x
+plantilla([cuales, son, las, causas, de, s(_), '?'], [causas_de_enfermedad], [6]).
+% x
+plantilla([como, se, trata, s(_), '?'], [tratamientos_para_enfermedad], [4]).
+%
+plantilla([quien, trata, s(_), '?'], [especialistas_para_enfermedad], [2]).
+
+plantilla([si, tengo, s(_), podria, ser, s(_), '?'], [flagSintoma], [2, 5]).
+
+plantilla(_, ['Por favor explica un poco mas'], []).
+
+
+
+% Predicado para coincidencia de patrones
+coincide([], []).
+coincide([S|RestoPatron], [I|RestoEntrada]) :-
+    atom(S), % si S es un s(_) devuelve falso
+    S == I,
+    coincide(RestoPatron, RestoEntrada), !.
+coincide([s(_)|RestoPatron], [_|RestoEntrada]) :-
+    coincide(RestoPatron, RestoEntrada), !.
+
+% Predicado para reemplazo en las respuestas
+reemplazar([], _, _, Respuesta, Resultado) :- append(Respuesta, [], Resultado), !.
+
+reemplazar([Indice|_], Entrada, _, [explicacion_de_enfermedad], Resultado) :-
+    nth0(Indice, Entrada, Atomo),
+    explicacion_de_enfermedad(Atomo, Explicacion),
+    Resultado = Explicacion, !.
+
+reemplazar([Indice|_], Entrada, _, [sintomas_de_enfermedad], Resultado) :-
+    nth0(Indice, Entrada, Atomo),
+    sintomas_de_enfermedad(Atomo, Sintomas),
+    Resultado = ['Los sintomas de ', Atomo, ' incluyen: ', Sintomas], !.
+
+reemplazar([Indice|_], Entrada, _, [causas_de_enfermedad], Resultado) :-
+    nth0(Indice, Entrada, Atomo),
+    causas_de_enfermedad(Atomo, Causas),
+    Resultado = ['Las causas de ', Atomo, ' son: ', Causas], !.
+
+reemplazar([Indice|_], Entrada, _, [tratamientos_para_enfermedad], Resultado) :-
+    nth0(Indice, Entrada, Atomo),
+    tratamientos_para_enfermedad(Atomo, Tratamientos),
+    Resultado = ['Los tratamientos para ', Atomo, ' incluyen: ', Tratamientos], !.
+
+reemplazar([Indice|_], Entrada, _, [especialistas_para_enfermedad], Resultado) :-
+    nth0(Indice, Entrada, Atomo),
+    especialistas_para_enfermedad(Atomo, Especialistas),
+    Resultado = ['Los especialistas que tratan ', Atomo, ' son: ', Especialistas], !.
+
+reemplazar([Indice|_], Entrada, _, [flagSintoma], Resultado) :-
+    nth0(Indice, Entrada, Sintoma),
+    nth0(5, Entrada, Enfermedad),
+    es_sintoma_de(Enfermedad, Sintoma, Resultado), !.
+
+reemplazar([Indice|_], Entrada, _, [indicador_familia], Resultado) :-
+    nth0(Indice, Entrada, Atomo),
+    familia(Atomo, Resultado), !.
+
+reemplazar([Indice|RestoIndices], Entrada, N, Respuesta, Resultado) :-
+    nth0(Indice, Entrada, Atomo),
+    select(N, Respuesta, Atomo, RespuestaTemporal),
+    N1 is N + 1,
+    reemplazar(RestoIndices, Entrada, N1, RespuestaTemporal, Resultado), !.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enfermedades
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+enfermedad(tosferina).
+enfermedad(tuberculosis).
+enfermedad(sifilis).
+
+% Declaraciones de sintomas, segun enfermedad
+sintoma_de(tosferina, tos_persistente).
+sintoma_de(tosferina, tos_severa).
+sintoma_de(tosferina, vomitos_despues_de_toser).
+sintoma_de(tosferina, fatiga).
+sintoma_de(tosferina, fiebre_baja).
+sintoma_de(tosferina, congestion_nasal).
+sintoma_de(tosferina, estornudos).
+
+sintoma_de(tuberculosis, tos_persistente).
+sintoma_de(tuberculosis, tos_con_esputo).
+sintoma_de(tuberculosis, dolor_en_el_pecho).
+sintoma_de(tuberculosis, debilidad).
+sintoma_de(tuberculosis, perdida_de_peso).
+sintoma_de(tuberculosis, perdida_de_apetito).
+sintoma_de(tuberculosis, fiebre).
+sintoma_de(tuberculosis, escalofrios).
+sintoma_de(tuberculosis, sudores_nocturnos).
+
+sintoma_de(sifilis, ulcera_indolora).
+sintoma_de(sifilis, erupcion_cutanea).
+sintoma_de(sifilis, lesiones_mucocutaneas).
+sintoma_de(sifilis, fiebre).
+sintoma_de(sifilis, ganglios_inflamados).
+sintoma_de(sifilis, afectacion_de_organos_internos).
+sintoma_de(sifilis, neurosifilis).
+sintoma_de(sifilis, gomas).
+
+% Declaraciones de medicamentos segun enfermedad
+medicina_para(tosferina, azitromicina).
+medicina_para(tosferina, claritromicina).
+medicina_para(tosferina, eritromicina).
+medicina_para(tosferina, vacuna_dTPa).
+medicina_para(tosferina, vacuna_dTPw).
+
+medicina_para(tuberculosis, isoniazida).
+medicina_para(tuberculosis, rifampicina).
+medicina_para(tuberculosis, pirazinamida).
+medicina_para(tuberculosis, etambutol).
+medicina_para(tuberculosis, estreptomicina).
+
+medicina_para(sifilis, penicilina_G).
+medicina_para(sifilis, doxiciclina).
+medicina_para(sifilis, azitromicina).
+medicina_para(sifilis, ceftriaxona).
+
+% Declaraciones de especialistas segun enfermedad
+especialista_para(tosferina, pediatra).
+especialista_para(tosferina, medico_de_familia).
+especialista_para(tosferina, infectologo).
+
+especialista_para(tuberculosis, neumologo).
+especialista_para(tuberculosis, infectologo).
+especialista_para(tuberculosis, medico_de_familia).
+
+especialista_para(sifilis, dermatologo).
+especialista_para(sifilis, urologo).
+especialista_para(sifilis, ginecologo).
+especialista_para(sifilis, infectologo).
+
+% Causas 
+causa(tosferina, 'La tosferina es causada por una bacteria llamada Bordetella pertussis.').
+causa(tosferina, 'La tosferina se propaga a traves de gotitas que se liberan al toser o estornudar.').
+
+causa(tuberculosis, 'La tuberculosis es causada por la bacteria Mycobacterium tuberculosis.').
+causa(tuberculosis, 'La tuberculosis se propaga de persona a persona a traves del aire cuando alguien con la enfermedad tose, estornuda o habla.').
+
+causa(sifilis, 'La sifilis es causada por la bacteria Treponema pallidum.').
+causa(sifilis, 'La sifilis se transmite principalmente a traves del contacto sexual.').
+causa(sifilis, 'La sifilis tambien puede transmitirse de una madre a su hijo durante el embarazo.').
+
+% Explicacion
+explicacion(tosferina, 'La tosferina, tambien conocida como pertusis, es una infeccion bacteriana altamente contagiosa. Afecta principalmente a los pulmones y puede causar tos severa.').
+explicacion(tuberculosis, 'La tuberculosis es una enfermedad infecciosa que afecta principalmente a los pulmones. Es causada por una bacteria y se propaga de persona a persona a traves del aire.').
+explicacion(sifilis, 'La sifilis es una enfermedad de transmision sexual causada por una bacteria. Puede causar complicaciones a largo plazo o la muerte si no se trata adecuadamente.').
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Logica enfermedades
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+es_sintoma_de(Enfermedad, Sintoma, Respuesta) :-
+    sintoma_de(Enfermedad, Sintoma),
+    Respuesta = [Sintoma, ' es un sintoma de ', Enfermedad, '. Es probable que lo tenga, consulte a su medico.'].
+es_sintoma_de(Enfermedad, Sintoma, Respuesta) :-
+    \+ sintoma_de(Enfermedad, Sintoma),
+    Respuesta = [Sintoma, ' no es un sintoma de ', Enfermedad, '.'].
+
+% Regla para explicar una enfermedad
+explicacion_de_enfermedad(Enfermedad, EXPLICACION) :-
+    enfermedad(Enfermedad),
+    explicacion(Enfermedad, EXPLICACION).
+
+% Regla para encontrar los sintomas de una enfermedad
+sintomas_de_enfermedad(Enfermedad, SINTOMAS) :-
+    enfermedad(Enfermedad),
+    findall(Sintoma, sintoma_de(Enfermedad, Sintoma), SINTOMAS).
+
+% Regla para encontrar las causas de una enfermedad
+causas_de_enfermedad(Enfermedad, CAUSAS) :-
+    enfermedad(Enfermedad),
+    findall(Causa, causa(Enfermedad, Causa), CAUSAS).
+
+% Regla para encontrar los tratamientos de una enfermedad
+tratamientos_para_enfermedad(Enfermedad, TRATAMIENTOS) :-
+    enfermedad(Enfermedad),
+    findall(Tratamiento, medicina_para(Enfermedad, Tratamiento), TRATAMIENTOS).
+
+% Regla para encontrar los especialistas que tratan una enfermedad
+especialistas_para_enfermedad(Enfermedad, ESPECIALISTAS) :-
+    enfermedad(Enfermedad),
+    findall(Especialista, especialista_para(Enfermedad, Especialista), ESPECIALISTAS).
